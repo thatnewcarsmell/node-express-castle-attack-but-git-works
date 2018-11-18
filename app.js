@@ -43,9 +43,9 @@ app.post('/kingdoms/:id/castles', (req, res) => {
         res.status(404).send({ error: { message: 'TRY AGAIN LOSA, NO PAGE FOUND!'}})
         next()
     }
-    let data = req.body.name === undefined ? kingdom.createCastle() : kingdom.createCastle(`${req.body.name}`)
+    req.body.name === undefined ? kingdom.createCastle() : kingdom.createCastle(`${req.body.name}`)
+    let data = kingdom.castles.slice(-1)
     res.status(201).send({data})
-    kingdoms.push(data)
 })
 
 // start server
