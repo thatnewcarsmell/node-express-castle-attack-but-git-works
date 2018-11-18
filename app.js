@@ -44,7 +44,7 @@ app.post('/kingdoms/:id/castles', (req, res) => {
         next()
     }
     req.body.name === undefined ? kingdom.createCastle() : kingdom.createCastle(`${req.body.name}`)
-    let data = kingdom.castles.slice(-1)
+    let [ data ] = kingdom.castles.slice(-1)
     res.status(201).send({data})
 })
 
